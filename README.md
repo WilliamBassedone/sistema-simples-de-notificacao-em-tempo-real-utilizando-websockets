@@ -18,6 +18,11 @@ Este repositório contém um sistema de notificação em tempo real utilizando *
 
 ## 📌 **Como Executar o Projeto**
 
+### 🔹 Requisitos
+- **PHP 7.4.33 (testado) – Compatível com PHP 8+**
+- **Composer** instalado
+- **XAMPP** ou outro servidor local
+
 ### **1️⃣ Instalar o XAMPP e Composer**
 1. Baixe e instale o [XAMPP](https://www.apachefriends.org/pt_br/download.html) (para rodar o PHP).
 2. Baixe e instale o [Composer](https://getcomposer.org/) (para instalar dependências).
