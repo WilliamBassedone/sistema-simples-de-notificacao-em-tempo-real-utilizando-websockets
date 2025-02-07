@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Notificações WebSocket</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="icon" href="data:,"> <!-- Evita erro de favicon 404 -->
+
+    <script>
+        let notificationCount = 0;
+        let socket = new WebSocket("ws://localhost:8080/ws");
+
+        socket.onopen = function () {
+            console.log("WebSocket conectado!");
+        };
+
+        socket.onmessage = function (event) {
+            let data = JSON.parse(event.data);
+
+            if (data.type === 'notification') {
+                notificationCount++;
+                document.getElementById("notification-badge").textContent = notificationCount;
+                document.getElementById("notification-badge").style.display = "inline-block";
+
+                // Adiciona um alerta de nova notificação
+                let alertBox = document.createElement("div");
+                alertBox.className = "alert alert-info mt-3";
+                alertBox.innerHTML = "<strong>Nova Notificação:</strong> " + data.message;
+                document.getElementById("notifications").prepend(alertBox);
+            }
+        };
+
+        function clearNotifications() {
+            notificationCount = 0;
+            document.getElementById("notification-badge").style.display = "none";
+            document.getElementById("notifications").innerHTML = "";
+        }
+    </script>
+</head>
+
+<body class="p-5">
+
+    <div class="container text-center">
+        <h2>Notificações em Tempo Real</h2>
+
+        <div class="position-relative d-inline-block mt-4">
+            <button class="btn btn-primary" onclick="clearNotifications()">
+                <i class="bi bi-bell"></i>
+                <span id="notification-badge" class="badge bg-danger position-absolute top-0 start-100 translate-middle"
+                    style="display: none;">0</span>
+            </button>
+        </div>
+
+        <br><br>
+        <div id="notifications" class="mt-4"></div>
+    </div>
+
+</body>
+
+</html>

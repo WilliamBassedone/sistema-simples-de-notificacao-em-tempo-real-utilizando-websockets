@@ -1,0 +1,55 @@
+# Ignorar arquivos comuns do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar dependências do Composer
+/vendor/
+composer.lock
+
+# Ignorar logs e caches
+*.log
+*.cache
+*.tmp
+*.swp
+*.swo
+/.phpunit.result.cache
+
+# Ignorar configurações do ambiente local
+.env
+.env.local
+.env.*.local
+
+# Ignorar arquivos de IDEs e editores de código
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Ignorar arquivos de build e deploy
+/node_modules/
+npm-debug.log
+yarn-error.log
+/public/storage
+/storage/*.key
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+
+# Ignorar arquivos específicos do Laravel (se aplicável)
+bootstrap/cache/
+storage/
+.env.example
+.phpunit.result.cache
+
+# Ignorar arquivos temporários e de upload
+/tmp/
+*.sql
+*.sqlite
+*.bak
+*.tar
+*.zip
+
+# Ignorar configurações específicas do servidor
+Homestead.yaml
+Homestead.json
+.vagrant/
